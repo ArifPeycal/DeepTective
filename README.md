@@ -1,8 +1,8 @@
 # DeepTective: Deepfake Detection Tool
-DeepTective is an innovative deepfake detection tool designed to empower users to identify and mitigate the risks associated with synthetic media manipulation. Leveraging state-of-the-art machine learning algorithms, DeepTective offers a comprehensive solution for detecting and analyzing deepfake content.
+DeepTective is an innovative deepfake detection tool designed to empower users to identify and mitigate the risks associated with synthetic media manipulation. Leveraging MesoNet deep learning algorithms, DeepTective offers a comprehensive solution for detecting and analyzing deepfake content.
 
 ## Features:
-Deepfake Detection: Upload suspicious media files (images, videos, or audio) for analysis and receive a confidence score indicating the likelihood of it being a deepfake.
+Deepfake Detection: Upload suspicious media files (images or videos) for analysis and receive a confidence score indicating the likelihood of it being a deepfake.
 
 ## How to Use:
 1. Upload Media: Simply upload the media file you wish to analyze using the provided interface.

@@ -12,14 +12,14 @@ meso = load_model('combined_df_model.h5')
 model = load_model('static.h5')
 meso.make_predict_function()
 
-def predict_label(img_path):
-	i = image.load_img(img_path, target_size=(256,256))
-	i = image.img_to_array(i)/255.0
-	i = i.reshape(1, 256,256,3)
-	preds = meso.predict(i)
-	x = (preds > 0.5).astype("int32")
-	y = float(preds)
-	return dic[int(x)], y
+# def predict_label(img_path):
+# 	i = image.load_img(img_path, target_size=(256,256))
+# 	i = image.img_to_array(i)/255.0
+# 	i = i.reshape(1, 256,256,3)
+# 	preds = meso.predict(i)
+# 	x = (preds > 0.5).astype("int32")
+# 	y = float(preds)
+# 	return dic[int(x)], y
 
 def predict_deepfake(img_path):
 	i = image.load_img(img_path, target_size=(256,256))
@@ -47,16 +47,16 @@ def get_output():
 		img_path = "static/" + img.filename	
 		img.save(img_path)
 
-		p, confidence = predict_label(img_path)
-		if (confidence < 0.5):
-			confidence = 1 - confidence
-		percentage = "{:.02%}".format(confidence)
+		# p, confidence = predict_label(img_path)
+		# if (confidence < 0.5):
+		# 	confidence = 1 - confidence
+		# percentage = "{:.02%}".format(confidence)
 
 		d, confidences = predict_deepfake(img_path)
 		if (confidences < 0.5):
 			confidences = 1 - confidences
 		confidences = "{:.02%}".format(confidences)
-	return render_template("index.html", prediction = p, img_path = img_path, confidence = percentage, deepfake = d, confidences = confidences)
+	return render_template("index.html",  img_path = img_path, deepfake = d, confidences = confidences)
 
 
 if __name__ =='__main__':

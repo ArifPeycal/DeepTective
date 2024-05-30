@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            background-color: var(--dl-color-scheme-yellow20);
+            font-family: 'Urbanist', sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+        }
+        .search-button {
+            background-color: #007bff;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            border-radius: 0 8px 8px 0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+        .upload-icon {
+            font-size: 20px;
+        }
+        #drop-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        #drop-area:hover {
+            background-color: #e9ecef;
+        }
+        .icon {
+            font-size: 50px;
+            color: #007bff;
+        }
+        .submit-button {
+            background-color: #007bff;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="../main/style.css" />
+    <!-- <link rel="stylesheet" href="./image.css" /> -->
+    <div>
+      <link href="../main/index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <div class="home-navbar navbar-container">
+          <div class="max-width">
+            <header data-thq="thq-navbar" class="home-navbar-interactive">
+              <div class="home-logo">
+                <img
+                  alt="image"
+                  src="../main/public/deeptective%20logo%20(1)-200h.png"
+                  class="home-image"
+                />
+              </div>
+              <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                <div class="home-links">
+                  <span class="home-text navbarLink">How it Works</span>
+                  <span class="home-text001 navbarLink">Features</span>
+                  <span class="home-text002 navbarLink">Blog</span>
+                  <span class="home-text003 navbarLink">Pricing</span>
+                  <button class="button-secondary button">Log in</button>
+                  <button class="button button-primary">Get started</button>
+                </div>
+              </div>
+              <div data-thq="thq-burger-menu" class="home-burger-menu">
+                <svg viewBox="0 0 1024 1024" class="home-icon">
+                  <path
+                    d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                  ></path>
+                </svg>
+              </div>
+            </header>
+            
+        </div>
+      </div>
+      
+    <div class="container">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Paste link here...">
+            <button class="search-button">
+                <i class="bi bi-upload upload-icon"></i>
+            </button>
+        </div>
+        <label for="input-file" id="drop-area">
+            <input type="file" id="input-file" hidden>
+            <div id="img-view">
+                <i class='bx bxs-cloud-upload icon'></i>
+                <h3>Upload Image</h3>
+                <p>Image size must be less than <span>2MB</span></p>
+            </div>
+        </label>
+        <button class="submit-button">Submit</button>
+    </div>
+    <footer class="home-footer">
+      <div class="home-links-container">
+        <div class="home-container07">
+          <div class="footer-column">
+            <span class="home-text064">Product</span>
+            <span class="home-text065">How it works</span>
+            <span class="home-text066">Features</span>
+            <span class="home-text067">Pricing</span>
+            <span class="home-text068">Blog</span>
+            <span>FAQ</span>
+          </div>
+          <div class="footer-column">
+            <span class="home-text070">App</span>
+            <span class="home-text071">Download iOS app</span>
+            <span class="home-text072">Download Android app</span>
+            <span class="home-text073">Log in to Portal</span>
+            <span class="home-text074">Administrative</span>
+            <span>Legal</span>
+          </div>
+          <div class="footer-column">
+            <span class="home-text076">Company</span>
+            <span class="home-text077">About us</span>
+            <span class="home-text078">Culture</span>
+            <span class="home-text079">Code of conduct</span>
+            <span class="home-text080">Careers</span>
+            <span class="home-text081">News</span>
+            <span>Contact</span>
+          </div>
+          <div class="footer-column">
+            <span class="home-text092">Security</span>
+            <span class="home-text093">Security status</span>
+            <span class="home-text094">ISO</span>
+            <span class="home-text095">System status</span>
+            <span>Customer Help</span>
+          </div>
+          <div class="footer-column">
+            <span class="home-text097">Follow</span>
+            <span class="home-text098">Instagram</span>
+            <span class="home-text099">Twitter</span>
+            <span class="home-text100">Facebook</span>
+            <span class="home-text101">Tik Tok</span>
+            <span class="home-text102">Linkedln</span>
+            <span>Youtube</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6qLUE06JOTKnFM6dZvQ4h/P7r1Lkkp1rGEEZ4Q5pEJsm6l2Zefk" crossorigin="anonymous"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</body>
+</html>

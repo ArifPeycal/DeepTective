@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Up Start Finance</title>
+    <meta property="og:title" content="Up Start Finance" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Titillium Web;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-scheme-green100);
+        background-color: var(--dl-color-scheme-yellow20);
+
+        fill: var(--dl-color-scheme-green100);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <!--This is the head section-->
+    <!-- <script type="text/javascript"> ... </script> -->
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <div class="home-navbar navbar-container">
+          <div class="max-width">
+            <header data-thq="thq-navbar" class="home-navbar-interactive">
+              <div class="home-logo">
+                <img
+                  alt="image"
+                  src="public/deeptective%20logo%20(1)-200h.png"
+                  class="home-image"
+                />
+              </div>
+              <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                <div class="home-links">
+                  <span class="home-text navbarLink">How it Works</span>
+                  <span class="home-text001 navbarLink">Features</span>
+                  <span class="home-text002 navbarLink">Blog</span>
+                  <span class="home-text003 navbarLink">Pricing</span>
+                  <button class="button-secondary button">Log in</button>
+                  <button class="button button-primary">Get started</button>
+                </div>
+              </div>
+              <div data-thq="thq-burger-menu" class="home-burger-menu">
+                <svg viewBox="0 0 1024 1024" class="home-icon">
+                  <path
+                    d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                  ></path>
+                </svg>
+              </div>
+              <!-- <div data-thq="thq-mobile-menu" class="home-mobile-menu">
+                <div class="home-nav">
+                  <div class="home-top">
+                    <div class="home-logo1">
+                      <img
+                        alt="image"
+                        src="public/group%202.svg"
+                        class="home-image1"
+                      />
+                      <span class="brandName">
+                        <span class="home-text005">UP -</span>
+                        <span>START</span>
+                      </span>
+                    </div>
+                    <div data-thq="thq-close-menu" class="home-close-menu">
+                      <svg viewBox="0 0 1024 1024" class="home-icon02">
+                        <path
+                          d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <nav class="home-links1">
+                    <span class="home-text007 navbarLink">About</span>
+                    <span class="home-text008 navbarLink">Features</span>
+                    <span class="home-text009 navbarLink">Pricing</span>
+                    <span class="home-text010 navbarLink">Team</span>
+                    <span class="home-text011 navbarLink">Blog</span>
+                  </nav>
+                  <div class="home-buttons">
+                    <button class="button-secondary button">Log in</button>
+                    <button class="button button-primary">Get started</button>
+                  </div>
+                </div>
+                <div>
+                  <svg viewBox="0 0 950.8571428571428 1024" class="home-icon04">
+                    <path
+                      d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                    ></path></svg
+                  ><svg
+                    viewBox="0 0 877.7142857142857 1024"
+                    class="home-icon06"
+                  >
+                    <path
+                      d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                    ></path></svg
+                  ><svg
+                    viewBox="0 0 602.2582857142856 1024"
+                    class="home-icon08"
+                  >
+                    <path
+                      d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                    ></path>
+                  </svg>
+                </div>
+              </div> -->
+            </header>
+          </div>
+        </div>
+        <div class="home-hero hero-container section-container">
+          <div class="home-max-width1 max-width">
+            <div class="home-content">
+              <span class="home-subtitle beforeHeading">
+                DEEPFAKE DETECTION SYSTEM
+              </span>
+              <h1 class="home-title">
+                <span>Unmasking deepfakes with</span>
+                <span class="home-text013">DeepTective AI</span>
+              </h1>
+              <span class="home-description">
+                Our deep learning algorithms detect manipulated images and
+                videos with industry-leading accuracy. Upload your media and get
+                instant results.
+              </span>
+              <div class="home-container01">
+                <button class="button button-gradient">Get started</button>
+                <a href="www.google.com">
+                  <button class="button button-transparent">Log in</button>
+                </a>
+              </div>
+            </div>
+            <div class="home-image2">
+              <img
+                alt="image"
+                src="public/union-400h.png"
+                class="home-graphic-top"
+              />
+              <img
+                alt="image"
+                src="public/group%2018-1200w.png"
+                class="home-image3"
+              />
+              <img
+                alt="image"
+                src="public/deepfake(1)-900w.jpg"
+                class="home-hero-image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="section-container">
+          <div class="home-max-width2 max-width">
+            <div class="home-image4">
+              <img
+                alt="image"
+                src="public/upload-1200w.jpg"
+                class="home-hero-image1"
+              />
+            </div>
+            <div class="home-content1">
+              <span class="home-text014 beforeHeading">how it works</span>
+              <h1 class="home-text015">
+                <span>Upload a</span>
+                <span class="home-text017">file</span>
+                <span>or paste a</span>
+                <span class="home-text019">social media post link</span>
+                <br />
+              </h1>
+              <span class="home-text021">
+                Our proprietary algorithms can analyze videos and images to
+                identify signs of manipulation. We support common formats like
+                MP4, MOV, JPG, and PNG.
+              </span>
+              <div class="home-container02">
+                <button class="button-secondary button bg-transparent">
+                  Learn more
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-section1 section-container">
+          <div class="home-max-width3 max-width">
+            <div class="home-content2">
+              <span class="home-text022 beforeHeading">ANALYSE YOUR FILES</span>
+              <h1 class="home-text023">
+                <span class="home-text024">Detect deepfake</span>
+                <span class="home-text025">with our detection models</span>
+                <br />
+              </h1>
+              <span class="home-text027">
+                Receive comprehensive results indicating whether the uploaded
+                content is a deepfake or not along with confidence score.
+              </span>
+              <div class="home-container03">
+                <button class="button-secondary button bg-transparent">
+                  See how
+                </button>
+              </div>
+            </div>
+            <div class="home-image5"></div>
+            <img
+              alt="image"
+              src="public/deepfake-600h.jpg"
+              class="home-hero-image2"
+            />
+          </div>
+        </div>
+        <div class="home-section2 section-container">
+          <div class="home-max-width4 max-width">
+            <div class="home-image6">
+              <img
+                alt="image"
+                src="public/register-1200w.jpg"
+                class="home-hero-image3"
+              />
+            </div>
+            <div class="home-content3">
+              <span class="home-text028 beforeHeading">get started</span>
+              <h1 class="home-text029">Register to DeepTective now</h1>
+              <div class="home-step">
+                <div class="home-number">
+                  <span class="home-text030">1</span>
+                </div>
+                <div class="home-container04">
+                  <span class="home-title1">Download UpStart App</span>
+                  <span class="home-text031">
+                    Amet minim mollit non deserunt ullamco est sit aliqua dolor
+                    do amet sint. Velit officia consequat duis enim velit
+                    mollit.
+                  </span>
+                </div>
+              </div>
+              <div class="home-step1">
+                <div class="home-number1">
+                  <span class="home-text032">2</span>
+                </div>
+                <div class="home-container05">
+                  <span class="home-title2">Create your free account</span>
+                  <span class="home-text033">
+                    Amet minim mollit non deserunt ullamco est sit aliqua dolor
+                    do amet sint. Velit officia consequat duis enim velit
+                    mollit.
+                  </span>
+                </div>
+              </div>
+              <div class="home-step2">
+                <div class="home-number2">
+                  <span class="home-text034">3</span>
+                </div>
+                <div class="home-container06">
+                  <span class="home-title3">
+                    Link your existing credit cards
+                  </span>
+                  <span class="home-text035">
+                    Amet minim mollit non deserunt ullamco est sit aliqua dolor
+                    do amet sint. Velit officia consequat duis enim velit
+                    mollit.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-container">
+          <div class="home-max-width5 max-width">
+            <span class="home-text036 beforeHeading">get started</span>
+            <h1 class="home-text037">
+              <span>No matter who you are,</span>
+              <br />
+              <span>DeepTective</span>
+              <span>&nbsp;will come to the rescue</span>
+            </h1>
+            <div class="home-cards-container">
+              <div class="card-card card-root-class-name">
+                <div class="card-info">
+                  <span class="card-text"><span>Social Media User</span></span>
+                  <span class="card-text1">
+                    <span>
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do.
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="card-card card-root-class-name2">
+                <div class="card-info">
+                  <span class="card-text"><span>Journalist</span></span>
+                  <span class="card-text1">
+                    <span>
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do.
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="card-card card-root-class-name1">
+                <div class="card-info">
+                  <span class="card-text"><span>Parents</span></span>
+                  <span class="card-text1">
+                    <span>
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do.
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-section4 section-container">
+          <div class="home-max-width6 max-width">
+            <div class="home-faq">
+              <div class="home-questions">
+                <span class="home-text042 beforeHeading">faq</span>
+                <h1 class="home-text043">
+                  <span class="home-text044">Frequently Asked</span>
+                  <br />
+                  <span class="home-text046">Questions</span>
+                </h1>
+                <div data-role="Accordion" class="question">
+                  <div data-type="accordion-header" class="home-trigger">
+                    <span class="home-text047">What is DeepTective?</span>
+                    <svg viewBox="0 0 1024 1024" class="home-icon10">
+                      <path
+                        d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div data-type="accordion-content" class="question-content">
+                    <span class="home-text048">
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do amet sint. Velit officia consequat duis enim
+                      velit mollit.
+                    </span>
+                  </div>
+                </div>
+                <div data-role="Accordion" class="question">
+                  <div data-type="accordion-header" class="home-trigger1">
+                    <span class="home-text049">
+                      Is Deeptective free to use?
+                    </span>
+                    <svg viewBox="0 0 1024 1024" class="home-icon12">
+                      <path
+                        d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div data-type="accordion-content" class="question-content">
+                    <span class="home-text050">
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do amet sint. Velit officia consequat duis enim
+                      velit mollit.
+                    </span>
+                  </div>
+                </div>
+                <div data-role="Accordion" class="question">
+                  <div data-type="accordion-header" class="home-trigger2">
+                    <span class="home-text051">
+                      Can DeepTective detect deepfakes in real time?
+                    </span>
+                    <svg viewBox="0 0 1024 1024" class="home-icon14">
+                      <path
+                        d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div data-type="accordion-content" class="question-content">
+                    <span class="home-text052">
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do amet sint. Velit officia consequat duis enim
+                      velit mollit.
+                    </span>
+                  </div>
+                </div>
+                <div data-role="Accordion" class="question">
+                  <div data-type="accordion-header" class="home-trigger3">
+                    <span class="home-text053">
+                      How accurate are the detection algorithms?
+                    </span>
+                    <svg viewBox="0 0 1024 1024" class="home-icon16">
+                      <path
+                        d="M810 554h-256v256h-84v-256h-256v-84h256v-256h84v256h256v84z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div data-type="accordion-content" class="question-content">
+                    <span class="home-text054">
+                      Amet minim mollit non deserunt ullamco est sit aliqua
+                      dolor do amet sint. Velit officia consequat duis enim
+                      velit mollit.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="image"
+                src="public/group%202-1200w.png"
+                class="home-image7"
+              />
+            </div>
+            <div class="home-banner">
+              <span class="home-text055 beforeHeading">get started</span>
+              <h1 class="home-text056">
+                <span>Push your finances to</span>
+                <br />
+                <span>the next level.</span>
+              </h1>
+              <span class="home-text060">
+                <span>Amet minim mollit non deserunt ullamco est sit</span>
+                <br />
+                <span>aliqua dolor do amet sint.</span>
+              </span>
+              <div class="home-btns">
+                <button class="home-button08 button button-transparent">
+                  See all plans
+                </button>
+                <button class="home-button09 button button-gradient">
+                  Get started
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="home-footer">
+          <div class="home-links-container">
+            <div class="home-container07">
+              <div class="footer-column">
+                <span class="home-text064">Product</span>
+                <span class="home-text065">How it works</span>
+                <span class="home-text066">Features</span>
+                <span class="home-text067">Pricing</span>
+                <span class="home-text068">Blog</span>
+                <span>FAQ</span>
+              </div>
+              <div class="footer-column">
+                <span class="home-text070">App</span>
+                <span class="home-text071">Download iOS app</span>
+                <span class="home-text072">Download Android app</span>
+                <span class="home-text073">Log in to Portal</span>
+                <span class="home-text074">Administrative</span>
+                <span>Legal</span>
+              </div>
+              <div class="footer-column">
+                <span class="home-text076">Company</span>
+                <span class="home-text077">About us</span>
+                <span class="home-text078">Culture</span>
+                <span class="home-text079">Code of conduct</span>
+                <span class="home-text080">Careers</span>
+                <span class="home-text081">News</span>
+                <span>Contact</span>
+              </div>
+              <div class="footer-column">
+                <span class="home-text083">Invest</span>
+                <span class="home-text084">Commodity</span>
+                <span class="home-text085">Savings</span>
+                <span class="home-text086">
+                  <span>Taxes and fees</span>
+                  <br />
+                  <span></span>
+                </span>
+                <span class="home-text089"><span>Currency exchange</span></span>
+                <span>Community</span>
+              </div>
+              <div class="footer-column">
+                <span class="home-text092">Security</span>
+                <span class="home-text093">Security status</span>
+                <span class="home-text094">ISO</span>
+                <span class="home-text095">System status</span>
+                <span>Customer Help</span>
+              </div>
+              <div class="footer-column">
+                <span class="home-text097">Follow</span>
+                <span class="home-text098">Instagram</span>
+                <span class="home-text099">Twitter</span>
+                <span class="home-text100">Facebook</span>
+                <span class="home-text101">Tik Tok</span>
+                <span class="home-text102">Linkedln</span>
+                <span>Youtube</span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script defer="">
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllAccordions()
+        }
+
+        const listenForUrlChanges = () => {
+          let url = location.href
+          document.body.addEventListener(
+            'click',
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts()
+                  url = location.href
+                }
+              })
+            },
+            true
+          )
+        }
+
+        const initializeAllAccordions = () => {
+          const allAccordions = document.querySelectorAll('[data-role="Accordion"]');
+
+          allAccordions.forEach((accordion) => {
+            const accordionHeader = accordion.querySelector('[data-type="accordion-header"]')
+            const accordionContent = accordion.querySelector('[data-type="accordion-content"]')
+
+            accordionHeader.addEventListener('click', () => {
+              if (accordionContent.style.maxHeight) {
+                accordionContent.style.maxHeight = ''
+              } else {
+                accordionContent.style.maxHeight = `${accordionContent.scrollHeight}px`
+              }
+            })
+          })
+        }
+
+        listenForUrlChanges()
+        runAllScripts()
+      }
+    </script>
+    <script
+      defer=""
+      src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+    ></script>
+  </body>
+</html>

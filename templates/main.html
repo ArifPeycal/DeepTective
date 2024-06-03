@@ -8,12 +8,12 @@
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../../asset/icon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../asset/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../asset/icon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='icon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='icon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -67,9 +67,12 @@
     <!-- <script type="text/javascript"> ... </script> -->
   </head>
   <body>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <div>
-      <link href="./index.css" rel="stylesheet" />
+      <!-- <link href="index.css" rel="stylesheet" /> -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
 
       <div class="home-container">
         <div class="home-navbar navbar-container">
@@ -78,7 +81,7 @@
               <div class="home-logo">
                 <img
                   alt="image"
-                  src="public/deeptective%20logo%20(1)-200h.png"
+                  src="{{url_for('static', filename= '/public/deeptectivelogo.png')}}"
                   class="home-image"
                 />
               </div>
@@ -183,17 +186,17 @@
             <div class="home-image2">
               <img
                 alt="image"
-                src="public/union-400h.png"
+                src="{{url_for('static', filename= 'public/union-400h.png')}}"
                 class="home-graphic-top"
               />
               <img
                 alt="image"
-                src="public/group%2018-1200w.png"
+                src="{{url_for('static', filename= 'public/group%2018-1200w.png')}}"
                 class="home-image3"
               />
               <img
                 alt="image"
-                src="public/deepfake(1)-900w.jpg"
+                src="{{url_for('static', filename= 'public/deepfake(1)-900w.jpg')}}"
                 class="home-hero-image"
               />
             </div>
@@ -204,7 +207,7 @@
             <div class="home-image4">
               <img
                 alt="image"
-                src="public/upload-1200w.jpg"
+                src="{{url_for('static', filename= 'public/upload-1200w.jpg')}}"
                 class="home-hero-image1"
               />
             </div>
@@ -252,7 +255,7 @@
             <div class="home-image5"></div>
             <img
               alt="image"
-              src="public/deepfake-600h.jpg"
+              src="{{url_for('static', filename= 'public/deepfake-600h.jpg')}}"
               class="home-hero-image2"
             />
           </div>
@@ -262,7 +265,7 @@
             <div class="home-image6">
               <img
                 alt="image"
-                src="public/register-1200w.jpg"
+                src="{{url_for('static', filename= 'public/register-1200w.jpg')}}"
                 class="home-hero-image3"
               />
             </div>
@@ -434,7 +437,7 @@
               </div>
               <img
                 alt="image"
-                src="public/group%202-1200w.png"
+                src="{{url_for('static', filename= 'public/faq.png')}}"
                 class="home-image7"
               />
             </div>

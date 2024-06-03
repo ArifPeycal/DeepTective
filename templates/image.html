@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../../asset/icon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../asset/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../asset/icon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon/favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='icon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='icon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <!-- <style data-tag="reset-style-sheet">
@@ -65,10 +65,10 @@
     <!-- <script type="text/javascript"> ... </script> -->
   </head>
   <body>
-    <link rel="stylesheet" href="../main/style.css" />
-    <link rel="stylesheet" href="./image.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='image.css') }}" />
     <div>
-      <link href="../main/index.css" rel="stylesheet" />
+      <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
 
       <div class="home-container">
         <div class="home-navbar navbar-container">
@@ -77,7 +77,7 @@
               <div class="home-logo">
                 <img
                   alt="image"
-                  src="../main/public/deeptective%20logo%20(1)-200h.png"
+                  src="{{url_for('static', filename= '/public/deeptectivelogo.png')}}"
                   class="home-image"
                 />
               </div>
@@ -168,7 +168,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 details-content">
-                        <img src="../../static/Capture.PNG" alt="Placeholder Image" class="img-fluid">
+                        <img src="{{url_for('static', filename= '/images/Capture.PNG')}}" alt="Placeholder Image" class="img-fluid">
                     </div>
                 </div>
                 <div class="row">

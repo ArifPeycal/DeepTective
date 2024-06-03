@@ -15,7 +15,6 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="profile.css">
 
     <link
     rel="stylesheet"
@@ -41,34 +40,77 @@
     href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
   />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<style>
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
         h2 {
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .profile-section {
-            margin-bottom: 50px;
-        }
-
-        .profile-section h3 {
+        .form-group {
             margin-bottom: 15px;
         }
 
-        .profile-info {
-            margin-bottom: 20px;
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
         }
 
-        .profile-info p {
-            margin: 5px 0;
+        .btn-submit {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-</style>
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .social-media a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
 <body>
-    <link rel="stylesheet" href="../main/style.css" />
+    <link rel="stylesheet" href="../templates/main/style.css" />
     <!-- <link rel="stylesheet" href="../image.css" /> -->
     <div>
-        <link href="../main/index.css" rel="stylesheet" />
+        <link href="../templates/main/index.css" rel="stylesheet" />
         <div class="home-container">
           <div class="home-navbar navbar-container">
             <div class="max-width">
@@ -76,7 +118,7 @@
                 <div class="home-logo">
                   <img
                     alt="image"
-                    src="../main/public/deeptective%20logo%20(1)-200h.png"
+                    src="../templates/main/public/deeptective%20logo%20(1)-200h.png"
                     class="home-image"
                   />
                 </div>
@@ -101,53 +143,32 @@
         </div>
       </div>
     <div class="container">
-        <div class="profile-section">
-            <h2>Profile</h2>
-            <div class="profile-info">
-                <p><strong>Email:</strong> user@example.com</p>
-                <p><strong>Username:</strong> user123</p>
-                <p><strong>Total Tasks:</strong> 4</p>
+        <h2>Contact Us</h2>
+        <p><strong>Company Name:</strong> DeepTective Inc.</p>
+        <p><strong>Email:</strong> info@deeptective.com</p>
+        <p><strong>Contact Number:</strong> +123-456-7890</p>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
             </div>
-            <a href="../update/update.html"><button class="update-button">Update Details</button></a>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+        <div class="social-media">
+            <p>Follow us on:</p>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
         </div>
-        <h2>Submission History</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>File</th>
-                    <th>Result</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2024-05-30-11:59:25</td>
-                    <td><img src="../../static/Capture18.PNG" alt="Submission 1"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-05-04-01:17:31</td>
-                    <td><img src="../../static/Capture14.PNG" alt="Submission 2"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-04-24-23:52:58</td>
-                    <td><img src="../../static/Capture15.PNG" alt="Submission 3"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-04-24-23:52:08</td>
-                    <td><img src="../../static/Capture17.PNG" alt="Submission 4"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="../drag/drag.html"><button class="upload-button">Upload new file</button></a>
     </div>
     <footer class="home-footer">
         <div class="home-links-container">
@@ -156,7 +177,7 @@
               <span class="home-text064">Product</span>
               <span class="home-text065">How it works</span>
               <span class="home-text066">Features</span>
-              <span class="home-text067">Contact Us</span>
+              <span class="home-text067">Pricing</span>
               <span class="home-text068">Blog</span>
               <span>FAQ</span>
             </div>
@@ -188,5 +209,11 @@
           </div>
         </div>
       </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            alert('Thank you for your feedback!'); // Replace this with actual form submission logic
+        });
+    </script>
 </body>
 </html>

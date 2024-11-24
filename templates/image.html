@@ -65,21 +65,23 @@
     <!-- <script type="text/javascript"> ... </script> -->
   </head>
   <body>
-    <link rel="stylesheet" href="../main/style.css" />
-    <link rel="stylesheet" href="./image.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/image.css" />
     <div>
-      <link href="../main/index.css" rel="stylesheet" />
+      <link href="../static/css/homepage.css" rel="stylesheet" />
 
       <div class="home-container">
         <div class="home-navbar navbar-container">
           <div class="max-width">
             <header data-thq="thq-navbar" class="home-navbar-interactive">
               <div class="home-logo">
-                <img
-                  alt="image"
-                  src="../main/public/deeptective%20logo%20(1)-200h.png"
-                  class="home-image"
-                />
+              <a href="../main/user_index.php">
+                  <img
+                    alt="image"
+                    src="../static/images/deeptective logo (1)-200h.png"
+                    class="home-image"
+                  />
+                </a>
               </div>
               <div data-thq="thq-navbar-nav" class="home-desktop-menu">
                 <div class="home-links">
@@ -87,8 +89,6 @@
                   <span class="home-text001 navbarLink">Features</span>
                   <span class="home-text002 navbarLink">Blog</span>
                   <span class="home-text003 navbarLink">Contact Us</span>
-                  <button class="button-secondary button">Log in</button>
-                  <button class="button button-primary">Register</button>
                 </div>
               </div>
               <div data-thq="thq-burger-menu" class="home-burger-menu">
@@ -154,6 +154,52 @@
                   </svg>
                 </div>
               </div> -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+              <link href="../static/css/user_icon.css" rel="stylesheet" />
+        <div class="profile-dropdown">
+          <div onclick="toggle()" class="profile-dropdown-btn" style="padding-right: 170px;">
+          <img src="../static/images/usericon.jpg" class="usericon" alt="icon" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #105749; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: block; margin: 0 auto; object-fit: cover;" />
+            <div class="profile-img">
+              <i class="fa-solid fa-circle"></i>
+            </div>
+    <span style="display: flex; align-items: center;">
+        <?php echo $_SESSION['username']; ?>
+        <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
+    </span>
+          </div>
+  
+          <ul class="profile-dropdown-list">
+            <li class="profile-dropdown-list-item">
+              <a href="../profile/profile.php">
+                <i class="fa-regular fa-user"></i>
+                Edit Profile
+              </a>
+            </li>
+  
+            <li class="profile-dropdown-list-item">
+              <a href="../history/history.php">
+                <i class="fa-solid fa-chart-line"></i>
+                Check Activity
+              </a>
+            </li>
+  
+            <li class="profile-dropdown-list-item">
+              <a href="../contact.php">
+                <i class="fa-regular fa-circle-question"></i>
+                Help & Support
+              </a>
+            </li>
+            <hr />
+  
+            <li class="profile-dropdown-list-item">
+              <a href="../logout.php">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Log out
+              </a>
+            </li>
+          </ul>
+        </div>
+      <script src="../static/js/user_index.js"></script>
             </header>
             
           </div>
@@ -168,7 +214,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 details-content">
-                        <img src="../../static/Capture.PNG" alt="Placeholder Image" class="img-fluid">
+                        <img src="../main/static/Capture.PNG" alt="Placeholder Image" class="img-fluid">
                     </div>
                 </div>
                 <div class="row">

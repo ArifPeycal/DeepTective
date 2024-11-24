@@ -1,0 +1,109 @@
+/* Body styling */
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 20px;
+    background-color: #105749; /* Dark green color */
+  }
+  
+  /* Form container styling */
+  #form {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Initial state for fade-in */
+    animation: bounceIn 1s ease forwards; /* Bounce-in animation */
+  }
+  
+  /* Form header styling */
+  h1 {
+    text-align: center;
+    color: #333; /* Dark gray color */
+    margin-bottom: 20px;
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Input field styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Radio button styling */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  label[for="male"],
+  label[for="female"] {
+    display: inline-block;
+    margin-right: 15px;
+  }
+  
+  /* Submit button styling */
+  #btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1db294; /* Blue color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Submit button hover effect */
+  #btn:hover {
+    background-color: #00775f; /* Darker blue color */
+  }
+  
+  /* Link styling */
+  a {
+    text-decoration: none;
+    color: #1db294; /* Blue color */
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  /* Link hover effect */
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Keyframes for bounce-in animation */
+  @keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    25% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    75% {
+        transform: translateY(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  

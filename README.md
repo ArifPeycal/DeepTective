@@ -15,6 +15,9 @@ To start using DeepTective, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Install the necessary dependencies.
+```bash
+pip3 install -r requirements.txt
+```
 3. Run the ```app.py``` and start analyzing media files for deepfake content.
 
 

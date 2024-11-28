@@ -1,0 +1,8 @@
+Flask
+Flask-Migrate
+Flask-SQLAlchemy
+Werkzeug
+numpy
+keras
+efficientnet
+tensorflow

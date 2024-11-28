@@ -1,14 +1,26 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for
-from config import Config
+# Standard Library Imports
 import os
+
+# Flask Imports
+from flask import Flask, render_template, request, redirect, flash, session, url_for
+
+# Configuration and Models
+from config import Config
 from models import db, User, File, MLModel, AnalysisResult
+
+# Flask Extensions
 from flask_migrate import Migrate
+
+# Werkzeug Utilities
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
+
+# Machine Learning and TensorFlow Imports
 from keras.models import load_model
 from keras.preprocessing import image
 from efficientnet.tfkeras import EfficientNetB0
 import numpy as np
+
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object(Config)

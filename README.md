@@ -19,7 +19,8 @@ To start using DeepTective, follow these steps:
 pip3 install -r requirements.txt
 ```
 3. Run the ```app.py``` and start analyzing media files for deepfake content.
-
+4. ```sql
+   INSERT INTO ml_models (model_name, display_name, accuracy, description) VALUES ('combined_df_model', 'Combined Deepfake Model', 95.0, 'Detects deepfakes using a combination of multiple algorithms.'), ('static_model', 'Static Model', 92.0, 'Specialized in detecting static image-based deepfakes.');```
 
 <!---
  Contributors:

@@ -1,25 +1,16 @@
-
-
-/* .hero {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(#e7baff, #c2b6d9);
+.container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-} */
-
-#drop-area {
-    width: 600px;
-    height: 600px;
-    padding: 30px;
-    background-color: #fff;
-    background-size: contain;
-    border-radius: 20px;
-    text-align: center;
-    background-size: cover;
-
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 #img-view{
     width: 100%;
@@ -49,4 +40,82 @@
 #img-view span{
     color: #777;
     font-weight: 600;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+}
+.search-button {
+    background-color: #007bff;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.search-button:hover {
+    background-color: #0056b3;
+}
+.upload-icon {
+    font-size: 20px;
+}
+#drop-area:hover {
+    background-color: #e9ecef;
+}
+#drop-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    width: 600px;
+    height: 600px;
+    background-color: #fff;
+    text-align: center;
+    background-size: cover;
+}
+
+.icon {
+    font-size: 50px;
+    color: #007bff;
+}
+.submit-button {
+    background-color: #007bff;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+.submit-button:hover {
+    background-color: #0056b3;
 }

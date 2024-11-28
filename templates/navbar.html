@@ -1,0 +1,90 @@
+<div class="home-navbar navbar-container">
+    <div class="max-width">
+        <header data-thq="thq-navbar" class="home-navbar-interactive">
+            <div class="home-logo">
+                <a href="/">
+                    <img
+                        alt="DeepTective Logo"
+                        src="{{ url_for('static', filename='images/deeptective logo (1)-200h.png') }}"
+                        class="home-image"
+                    />
+                </a>
+            </div>
+            {% if 'username' in session %}
+                <!-- Links Section for Logged-In Users -->
+                <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                    <div class="home-links">
+                        <a href="#howitworks"><span class="home-text navbarLink">How it Works</span></a>
+                        <a href="#getstarted"><span class="home-text001 navbarLink">Features</span></a>
+                        <span class="home-text002 navbarLink">Blog</span>
+                        <a href="{{ url_for('contact') }}"><span class="home-text003 navbarLink">Contact Us</span></a>
+                    </div>
+                </div>
+
+                <!-- Profile Dropdown -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+                <link href="{{ url_for('static', filename='css/user_icon.css') }}" rel="stylesheet" />
+                <div class="profile-dropdown">
+                    <div onclick="toggle()" class="profile-dropdown-btn" style="padding-right: 170px;">
+                        <img
+                        src="{{ url_for('static', filename='images/usericon.jpg') }}"
+                        class="usericon"
+                        alt="User Icon"
+                        style="
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            border: 2px solid #105749;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            display: block;
+                            margin: 0 auto;
+                            object-fit: cover;"
+                        />
+                        <span>{{ session['username'] }}</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <ul class="profile-dropdown-list">
+                        <li class="profile-dropdown-list-item">
+                            <a href="{{ url_for('profile') }}">
+                                <i class="fa-regular fa-user"></i>
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li class="profile-dropdown-list-item">
+                            <a href="/history">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Check Activity
+                            </a>
+                        </li>
+                        <li class="profile-dropdown-list-item">
+                            <a href="{{ url_for('contact') }}">
+                                <i class="fa-regular fa-circle-question"></i>
+                                Help & Support
+                            </a>
+                        </li>
+                        <li class="profile-dropdown-list-item">
+                            <a href="{{ url_for('logout') }}">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <!-- Links Section for Non-Logged-In Users -->
+                <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                    <div class="home-links">
+                        <a href="#howitworks"><span class="home-text navbarLink">How it Works</span></a>
+                        <a href="#getstarted"><span class="home-text001 navbarLink">Features</span></a>
+                        <span class="home-text002 navbarLink">Blog</span>
+                        <a href="{{ url_for('contact') }}"><span class="home-text003 navbarLink">Contact Us</span></a>
+                        <a href="{{ url_for('login') }}" class="button-secondary button">Log In</a>
+                        <a href="{{ url_for('register') }}" class="button button-primary">Register</a>
+                    </div>
+                </div>
+            {% endif %}
+            <script src="{{ url_for('static', filename='js/user_index.js') }}"></script>
+
+        </header>
+    </div>
+</div>

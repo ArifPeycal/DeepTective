@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DeepTective🕵🏻</title>
+    <meta property="og:title" content="Up Start Finance" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="../static/icon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../asset/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../asset/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../asset/icon/favicon-16x16.png">
+    <link rel="manifest" href="../static/icon/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--This is the head section-->
+    <!-- <script type="text/javascript"> ... </script> -->
+  </head>
+  <body>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/image.css" />
+
+    <div>
+      <link href="../static/css/homepage.css" rel="stylesheet" />
+
+      <div class="home-container">
+        {% include 'navbar.html' %}
+        
+        <div class="container">
+            <div class="details-section">
+                <div class="row">
+                    <div class="col-12 details-heading">
+                        DETAILS
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 details-content">
+                        <img src="{{ file.file_url }}" alt="Placeholder Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 details-note">
+                        DeepTective aims to give an opinion about the scanned video and is not responsible for the result. As DeepTective is still in beta, the results should not be treated as an absolute truth or evidence.
+                    </div>
+                </div>
+                <div class="result-section row">
+                    <div class="col-md-4">
+                        <h5>Model Results</h5>
+                        {% for model, result in results.items() %}
+                        <p>
+                            {{ model }}: 
+                            <span class="{% if 'real' in result.label %}text-success{% else %}text-danger{% endif %}">
+                                {{ result.label }} ({{ result.confidence }})
+                            </span>
+                        </p>
+                    {% endfor %}
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Image</h5>
+                        <p>File Name:  {{ file.file_name }}</p>
+                        <p>Upload Date: {{ file.upload_date }}</p>
+                        <!-- <p>File Type: {{ file.file_type }}</p> -->
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Audio</h5>
+                        <p>Duration: -</p>
+                        <p>Channel: -</p>
+                        <p>Sample Rate: -</p>
+                        <p>Codec: -</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="result-section row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">Request Expert Review</button>
+                    <button class="btn btn-danger">Request Takedown</button>
+                </div>
+            </div> -->
+        </div>
+        <style>
+            body {
+                background-color: var(--dl-color-scheme-yellow20);
+            }
+        </style>
+        {% include 'footer.html' %}
+      </div>
+    </div>
+  </body>
+</html>

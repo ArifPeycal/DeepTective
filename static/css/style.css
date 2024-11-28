@@ -29,6 +29,7 @@
     --dl-color-scheme-lightgreen: #c7ff9bff;
     --dl-space-space-oneandhalfunits: 24px;
   }
+  
   .button {
     color: var(--dl-color-scheme-green100);
     cursor: pointer;

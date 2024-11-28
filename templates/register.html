@@ -10,24 +10,18 @@
         
         <div id="form">
             <h1>Sign Up</h1>
-            <form onsubmit="isvalid()" method="POST" autocomplete="off">
-                <label>Full Name: </label>
-                <input type="text" id="user_name" name="user_name" pattern="^[a-zA-Z]+(?: [a-zA-Z]+(?: [a-zA-Z]+(?: (?:bin|ibn) )*[a-zA-Z]+)*)*(?: @ [a-zA-Z]+)?$" required><br><br>
+            <form method="POST" autocomplete="off" action="/register">
+                <label>Username: </label>
+                <input type="text" id="username" name="username" required><br><br>
                 
                 <label>Email: </label>
                 <input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required><br><br>
                 
                 <label>Password: </label>
                 <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required><br><br>
-                
-                <label>Gender: </label>
-                <input type="radio" id="male" name="gender" value="male" required>
-                <label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="female" required>
-                <label for="female">Female</label><br><br>
-                
+            
                 <input type="submit" id="btn" value="Submit"><br><br>
-                <a href="signin.php">Click to Login</a><br><br>
+                <a href="/login">Click to Login</a><br><br>
             </form>
         </div>
     </body>

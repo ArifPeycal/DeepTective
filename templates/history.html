@@ -15,7 +15,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="../static/css/history.css">
     <link
     rel="stylesheet"
     href="https://unpkg.com/animate.css@4.1.1/animate.css"
@@ -42,10 +42,10 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <link rel="stylesheet" href="../main/style.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
     <!-- <link rel="stylesheet" href="../image.css" /> -->
     <div>
-        <link href="../main/index.css" rel="stylesheet" />
+        <link href="../static/css/homepage.css" rel="stylesheet" />
         <div class="home-container">
           <div class="home-navbar navbar-container">
             <div class="max-width">
@@ -53,7 +53,7 @@
                 <div class="home-logo">
                   <img
                     alt="image"
-                    src="../main/public/deeptective%20logo%20(1)-200h.png"
+                    src="../static/images/deeptective logo (1)-200h.png"
                     class="home-image"
                   />
                 </div>
@@ -78,30 +78,34 @@
         </div>
       </div>
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Detector</th>
-                    <th>Result</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Univ. Federico II of Naples - image detector (2023)</td>
-                    <td><div class="gauge"><span>0.0%</span><p>AI-Generated Likelihood</p></div></td>
-                    <td><a href="#">Completed</a></td>
-                </tr>
-                <tr>
-                    <td>Univ. Albany - image detector (2019)</td>
-                    <td><div class="gauge"><span>0.0%</span><p>AI-Generated Likelihood</p></div></td>
-                    <td><a href="#">Completed</a></td>
-                </tr>
-            </tbody>
-        </table>
+      <table>
+        <thead>
+            <tr>
+                <th>Detector</th>
+                <th>Result</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission in submission_history %}
+            <tr>
+                <td>{{ submission.detector }}</td>
+                <td>
+                    <div class="gauge">
+                        <span>{{ submission.confidence }}</span>
+                        <p>{{ submission.result }}</p>
+                    </div>
+                </td>
+                <td>
+                    <span>{{ submission.status }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
         <div class="buttons">
-            <a href="../drag/drag.html"><button class="upload-button">Upload Another File</button></a>
-            <a href="../profile/profile.html"><button class="check-history-button">Check Submission History</button></a>
+            <a href="/drag"><button class="upload-button">Upload Another File</button></a>
+            <a href="/profile"><button class="check-history-button">Check Submission History</button></a>
         </div>
     </div>
     <footer class="home-footer">

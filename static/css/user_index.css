@@ -710,7 +710,7 @@
     border-radius: 48px;
     flex-direction: column;
     background-size: cover;
-    background-image: url("public/group%2011-1200w.png");
+    background-image: url("../images/group\ 11-1200w.png");
   }
   .home-text055 {
     color: var(--dl-color-scheme-lightgreen);

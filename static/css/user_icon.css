@@ -44,7 +44,7 @@ body {
   box-shadow: var(--shadow); */
 
   cursor: pointer;
-  border: 1px solid var(--secondary);
+  border: 1px solid #227c70;
   transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in,
     border 0.3s;
 }
@@ -116,7 +116,7 @@ body {
   font-size: 1.1rem;
   width: 2.3rem;
   height: 2.3rem;
-  background-color: var(--secondary);
+  background-color: #227c70;
   color: var(--white);
   line-height: 2.3rem;
   text-align: center;

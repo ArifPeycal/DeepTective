@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepTective🕵🏻</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evSXBKJEiFNJhqCsLnTmojOvCTpBVzudyBulo6V+1z9Bp+/pL9ORaIDOWzWTiNi" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../static/icon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="../../asset/icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../asset/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../asset/icon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="../static/icon/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../static/css/profile.css">
+
+
 
     <link
     rel="stylesheet"
@@ -41,7 +41,7 @@
     href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
   />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<style>
+<!-- <style>
   
         h2 {
             margin-bottom: 20px;
@@ -63,99 +63,25 @@
         .profile-info p {
             margin: 5px 0;
         }
-</style>
+</style> -->
 </head>
-
 <body>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <!-- <link rel="stylesheet" href="../image.css" /> -->
+<link rel="stylesheet" href="../static/css/style.css" />
+<link rel="stylesheet" href="../static/css/profile.css">
+
     <div>
         <link href="../static/css/homepage.css" rel="stylesheet" />
         <div class="home-container">
-          <div class="home-navbar navbar-container">
-            <div class="max-width">
-              <header data-thq="thq-navbar" class="home-navbar-interactive">
-                <div class="home-logo">
-                  <img
-                    alt="image"
-                    src="../static/images/deeptective logo (1)-200h.png"
-                    class="home-image"
-                  />
-                </div>
-                <div data-thq="thq-navbar-nav" class="home-desktop-menu">
-                  <div class="home-links">
-                    <span class="home-text navbarLink">How it Works</span>
-                    <span class="home-text001 navbarLink">Features</span>
-                    <span class="home-text002 navbarLink">Blog</span>
-                    <span class="home-text003 navbarLink">Contact Us</span>
-                  </div>
-                </div>
-                <div data-thq="thq-burger-menu" class="home-burger-menu">
-                  <svg viewBox="0 0 1024 1024" class="home-icon">
-                    <path
-                      d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-                    ></path>
-                  </svg>
-                </div>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-                <link href="../static/css/user_icon.css" rel="stylesheet" />
-          <div class="profile-dropdown">
-            <div onclick="toggle()" class="profile-dropdown-btn" style="padding-right: 170px;">
-            <img src="../static/images/usericon.jpg" class="usericon" alt="icon" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #105749; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: block; margin: 0 auto; object-fit: cover;" />
-              <div class="profile-img">
-                <i class="fa-solid fa-circle"></i>
-              </div>
-      <span style="display: flex; align-items: center;">
-          <?php echo $_SESSION['username']; ?>
-          <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
-      </span>
-            </div>
-    
-            <ul class="profile-dropdown-list">
-              <li class="profile-dropdown-list-item">
-                <a href="../profile/profile.php">
-                  <i class="fa-regular fa-user"></i>
-                  Edit Profile
-                </a>
-              </li>
-    
-              <li class="profile-dropdown-list-item">
-                <a href="../history/history.php">
-                  <i class="fa-solid fa-chart-line"></i>
-                  Check Activity
-                </a>
-              </li>
-    
-              <li class="profile-dropdown-list-item">
-                <a href="../contact.php">
-                  <i class="fa-regular fa-circle-question"></i>
-                  Help & Support
-                </a>
-              </li>
-              <hr />
-    
-              <li class="profile-dropdown-list-item">
-                <a href="../logout.php">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  Log out
-                </a>
-              </li>
-            </ul>
-          </div>
-        <script src="../static/js/user_index.js"></script>
-            </header>
-
-        </div>
-      </div>
-    <div class="container">
+          {% include 'navbar.html' %}
+        <div class="container">
         <div class="profile-section">
             <h2>Profile</h2>
             <div class="profile-info">
-                <p><strong>Email:</strong> user@example.com</p>
-                <p><strong>Username:</strong> user123</p>
-                <p><strong>Total Tasks:</strong> 4</p>
+              <p><strong>Email:</strong> {{ email }}</p>
+              <p><strong>Username:</strong> {{ username }}</p>
+              <p><strong>Total Tasks:</strong> {{ total_tasks }}</p>
             </div>
-            <a href="../update/update.html"><button class="update-button">Update Details</button></a>
+            <a href="/update-profile"><button class="update-button">Update Details</button></a>
         </div>
         <h2>Submission History</h2>
         <table>
@@ -168,72 +94,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>2024-05-30-11:59:25</td>
-                    <td><img src="../../static/Capture18.PNG" alt="Submission 1"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-05-04-01:17:31</td>
-                    <td><img src="../../static/Capture14.PNG" alt="Submission 2"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-04-24-23:52:58</td>
-                    <td><img src="../../static/Capture15.PNG" alt="Submission 3"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
-                <tr>
-                    <td>2024-04-24-23:52:08</td>
-                    <td><img src="../../static/Capture17.PNG" alt="Submission 4"></td>
-                    <td><a href="/templates/history/history.html">Result Link</a></td>
-                    <td><span class="status success"></span></td>
-                </tr>
+              {% for submission in submission_history %}
+              <tr>
+                  <td>{{ submission.date }}</td>
+                  <td><img src="{{ submission.file_url }}" alt="Submission"></td>
+                  <td><a href="{{ submission.result_link }}">Result Link</a></td>
+                  <td>
+                      <span class="status {{ submission.status }}"></span>
+                  </td>
+              </tr>
+              {% endfor %}
             </tbody>
         </table>
-        <a href="../drag/drag.html"><button class="upload-button">Upload new file</button></a>
+        <a href="/drag"><button class="upload-button">Upload new file</button></a>
     </div>
-    <footer class="home-footer">
-        <div class="home-links-container">
-          <div class="home-container07">
-            <div class="footer-column">
-              <span class="home-text064">Product</span>
-              <span class="home-text065">How it works</span>
-              <span class="home-text066">Features</span>
-              <span class="home-text067">Contact Us</span>
-              <span class="home-text068">Blog</span>
-              <span>FAQ</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text076">Company</span>
-              <span class="home-text077">About us</span>
-              <span class="home-text078">Culture</span>
-              <span class="home-text079">Code of conduct</span>
-              <span class="home-text080">Careers</span>
-              <span class="home-text081">News</span>
-              <span>Contact</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text092">Security</span>
-              <span class="home-text093">Security status</span>
-              <span class="home-text094">ISO</span>
-              <span class="home-text095">System status</span>
-              <span>Customer Help</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text097">Follow</span>
-              <span class="home-text098">Instagram</span>
-              <span class="home-text099">Twitter</span>
-              <span class="home-text100">Facebook</span>
-              <span class="home-text101">Tik Tok</span>
-              <span class="home-text102">Linkedln</span>
-              <span>Youtube</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <style>
+      body {
+          background-color: var(--dl-color-scheme-yellow20);
+      }
+  </style>
+    {% include 'footer.html' %}
 </body>
 </html>

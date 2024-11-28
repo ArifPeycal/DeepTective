@@ -1,0 +1,95 @@
+<!-- templates/navbar.html -->
+<div class="home-navbar navbar-container">
+    <div class="max-width">
+        <header data-thq="thq-navbar" class="home-navbar-interactive">
+            <!-- Logo -->
+            <div class="home-logo">
+                <a href="/">
+                    <img
+                        alt="DeepTective Logo"
+                        src="{{ url_for('static', filename='images/deeptective logo (1)-200h.png') }}"
+                        class="home-image"
+                    />
+                </a>
+            </div>
+
+            <!-- Links Section -->
+            <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                <div class="home-links">
+                    <a href="#howitworks"><span class="home-text navbarLink">How it Works</span></a>
+                    <a href="#getstarted"><span class="home-text001 navbarLink">Features</span></a>
+                    <span class="home-text002 navbarLink">Blog</span>
+                    <span class="home-text003 navbarLink">Contact Us</span>
+                </div>
+            </div>
+
+            <!-- Burger Menu -->
+            <div data-thq="thq-burger-menu" class="home-burger-menu">
+                <svg viewBox="0 0 1024 1024" class="home-icon">
+                    <path
+                        d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                    ></path>
+                </svg>
+            </div>
+
+            <!-- Profile Dropdown -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+            <link href="{{ url_for('static', filename='css/user_icon.css') }}" rel="stylesheet" />
+            <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn" style="padding-right: 170px;">
+                    <img
+                        src="{{ url_for('static', filename='images/usericon.jpg') }}"
+                        class="usericon"
+                        alt="User Icon"
+                        style="
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            border: 2px solid #105749;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            display: block;
+                            margin: 0 auto;
+                            object-fit: cover;"
+                    />
+                    <div class="profile-img">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <span style="display: flex; align-items: center;">
+                        {{ session['username'] }}
+                        <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
+                    </span>
+                </div>
+
+                <!-- Dropdown Menu -->
+                <ul class="profile-dropdown-list">
+                    <li class="profile-dropdown-list-item">
+                        <a href="{{ url_for('profile') }}">
+                            <i class="fa-regular fa-user"></i>
+                            Edit Profile
+                        </a>
+                    </li>
+                    <li class="profile-dropdown-list-item">
+                        <a href="/history">
+                            <i class="fa-solid fa-chart-line"></i>
+                            Check Activity
+                        </a>
+                    </li>
+                    <li class="profile-dropdown-list-item">
+                        <a href="{{ url_for('contact') }}">
+                            <i class="fa-regular fa-circle-question"></i>
+                            Help & Support
+                        </a>
+                    </li>
+                    <hr />
+                    <li class="profile-dropdown-list-item">
+                        <a href="{{ url_for('logout') }}">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Log out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <script src="{{ url_for('static', filename='js/user_index.js') }}"></script>
+        </header>
+    </div>
+</div>

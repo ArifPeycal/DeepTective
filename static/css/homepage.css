@@ -1,3 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+body {
+  font-weight: 400;
+  font-family: Poppins;
+  font-style:normal;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.15;
+  color: var(--dl-color-scheme-green100);
+  background-color: var(--dl-color-scheme-yellow20);
+  align-items: center;
+  justify-content: center;
+  fill: var(--dl-color-scheme-green100);
+  }
+  
+  .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      align-items: center;
+      
+  }
+
+  h2 {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  a, a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+  .form-group {
+      margin-bottom: 15px;
+  }
+
+  .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+  }
+
+  .btn-submit {
+      display: block;
+      width: 150px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  .btn-submit:hover {
+      background-color: #0056b3;
+  }
+
+  .social-media {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .social-media a {
+      margin: 0 10px;
+      color: #007bff;
+      text-decoration: none;
+  }
+
+  .social-media a:hover {
+      color: #0056b3;
+  }
 .card-card {
     flex: 0 0 auto;
     width: 32%;
@@ -28,7 +105,7 @@
   .card-text {
     font-size: 20px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: var(--dl-space-space-halfunit);
@@ -231,7 +308,7 @@
     color: var(--dl-color-scheme-white);
     font-size: 52px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: var(--dl-space-space-twounits);
@@ -307,7 +384,7 @@
   .home-text015 {
     font-size: 42px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: var(--dl-space-space-twounits);
@@ -350,7 +427,7 @@
   .home-text023 {
     font-size: 42px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: var(--dl-space-space-twounits);
@@ -414,7 +491,7 @@
     color: var(--dl-color-scheme-white);
     font-size: 42px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 700;
     line-height: 1.35;
     margin-bottom: var(--dl-space-space-twounits);
@@ -439,7 +516,7 @@
   .home-text030 {
     font-size: 28px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
   }
@@ -453,7 +530,7 @@
     color: var(--dl-color-scheme-white);
     font-size: 24px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: var(--dl-space-space-halfunit);
@@ -482,7 +559,7 @@
   .home-text032 {
     font-size: 28px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
   }
@@ -496,7 +573,7 @@
     color: var(--dl-color-scheme-white);
     font-size: 24px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: var(--dl-space-space-halfunit);
@@ -524,7 +601,7 @@
   .home-text034 {
     font-size: 28px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
   }
@@ -538,7 +615,7 @@
     color: var(--dl-color-scheme-white);
     font-size: 24px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: var(--dl-space-space-halfunit);
@@ -560,7 +637,7 @@
     font-size: 42px;
     font-style: normal;
     text-align: center;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: var(--dl-space-space-threeunits);
@@ -575,6 +652,7 @@
   }
   .home-section4 {
     padding-top: 0px;
+
   }
   .home-max-width6 {
     align-items: center;
@@ -604,17 +682,17 @@
   .home-text043 {
     font-size: 42px;
     font-style: normal;
-    font-family: Urbanist;
+    font-family: Poppins;
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: var(--dl-space-space-twounits);
   }
   .home-text044 {
-    font-family: Urbanist;
+    font-family: Poppins;
   }
   .home-text046 {
     color: var(--dl-color-scheme-orange100);
-    font-family: Urbanist;
+    font-family: Poppins;
   }
   .home-trigger {
     width: 100%;
@@ -625,7 +703,7 @@
   .home-text047 {
     font-size: 20px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 600;
     line-height: 1.5;
   }
@@ -645,7 +723,7 @@
   .home-text049 {
     font-size: 20px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 600;
     line-height: 1.5;
   }
@@ -665,7 +743,7 @@
   .home-text051 {
     font-size: 20px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 600;
     line-height: 1.5;
   }
@@ -685,7 +763,7 @@
   .home-text053 {
     font-size: 20px;
     font-style: normal;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 600;
     line-height: 1.5;
   }
@@ -710,7 +788,7 @@
     border-radius: 48px;
     flex-direction: column;
     background-size: cover;
-    background-image: url("public/group%2011-1200w.png");
+    background-image: url("/static/images/group\ 11-1200w.png");
   }
   .home-text055 {
     color: var(--dl-color-scheme-lightgreen);
@@ -721,7 +799,7 @@
     font-size: 42px;
     font-style: normal;
     text-align: center;
-    font-family: "Urbanist";
+    font-family: "Poppins";
     font-weight: 700;
     line-height: 1.25;
     margin-bottom: var(--dl-space-space-halfunit);

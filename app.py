@@ -33,8 +33,9 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 result = {0 : 'deepfake', 1 : 'real'}
 
 models = {
-    "combined_df_model": load_model('combined_df_model.h5'),
-    "static_model": load_model('static.h5'),
+    "custom_cnn_model": load_model('customcnn-batch64-epoch19.h5'),
+    "mesonet_deepfake_model": load_model('mesonet-batch64-epoch22.h5'),
+    "mesonet_gan_model": load_model('gan-mesonet-batch64-1e-6.h5'),
 }
 
 def predict_deepfake(model, file_path):

@@ -16,7 +16,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     
-    <link rel="stylesheet" href="../static/css/history.css">
     <link
     rel="stylesheet"
     href="https://unpkg.com/animate.css@4.1.1/animate.css"
@@ -42,111 +41,49 @@
   />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <!-- <link rel="stylesheet" href="../image.css" /> -->
+  <body>
+    <link rel="stylesheet" href="../static/css/history.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}" />
     <div>
-        <link href="../static/css/homepage.css" rel="stylesheet" />
+      <link href="{{ url_for('static', filename='/css/homepage.css') }}" rel="stylesheet" />
         <div class="home-container">
-          <div class="home-navbar navbar-container">
-            <div class="max-width">
-              <header data-thq="thq-navbar" class="home-navbar-interactive">
-                <div class="home-logo">
-                  <img
-                    alt="image"
-                    src="../static/images/deeptective logo (1)-200h.png"
-                    class="home-image"
-                  />
-                </div>
-                <div data-thq="thq-navbar-nav" class="home-desktop-menu">
-                  <div class="home-links">
-                    <span class="home-text navbarLink">How it Works</span>
-                    <span class="home-text001 navbarLink">Features</span>
-                    <span class="home-text002 navbarLink">Blog</span>
-                    <span class="home-text003 navbarLink">Contact Us</span>
-                    <button class="button-secondary button">Log in</button>
-                    <button class="button button-primary">Register</button>
-                  </div>
-                </div>
-                <div data-thq="thq-burger-menu" class="home-burger-menu">
-                  <svg viewBox="0 0 1024 1024" class="home-icon">
-                    <path
-                      d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-                    ></path>
-                  </svg>
-                </div>
-            </header>
-        </div>
-      </div>
-    <div class="container">
-      <table>
-        <thead>
-            <tr>
-                <th>Detector</th>
-                <th>Result</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for submission in submission_history %}
-            <tr>
-                <td>{{ submission.detector }}</td>
-                <td>
-                    <div class="gauge">
-                        <span>{{ submission.confidence }}</span>
-                        <p>{{ submission.result }}</p>
-                    </div>
-                </td>
-                <td>
-                    <span>{{ submission.status }}</span>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-        <div class="buttons">
-            <a href="/drag"><button class="upload-button">Upload Another File</button></a>
-            <a href="/profile"><button class="check-history-button">Check Submission History</button></a>
-        </div>
-    </div>
-    <footer class="home-footer">
-        <div class="home-links-container">
-          <div class="home-container07">
-            <div class="footer-column">
-              <span class="home-text064">Product</span>
-              <span class="home-text065">How it works</span>
-              <span class="home-text066">Features</span>
-              <span class="home-text067">Contact Us</span>
-              <span class="home-text068">Blog</span>
-              <span>FAQ</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text076">Company</span>
-              <span class="home-text077">About us</span>
-              <span class="home-text078">Culture</span>
-              <span class="home-text079">Code of conduct</span>
-              <span class="home-text080">Careers</span>
-              <span class="home-text081">News</span>
-              <span>Contact</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text092">Security</span>
-              <span class="home-text093">Security status</span>
-              <span class="home-text094">ISO</span>
-              <span class="home-text095">System status</span>
-              <span>Customer Help</span>
-            </div>
-            <div class="footer-column">
-              <span class="home-text097">Follow</span>
-              <span class="home-text098">Instagram</span>
-              <span class="home-text099">Twitter</span>
-              <span class="home-text100">Facebook</span>
-              <span class="home-text101">Tik Tok</span>
-              <span class="home-text102">Linkedln</span>
-              <span>Youtube</span>
-            </div>
+        {% include 'navbar.html' %}
+          <div class="container">
+            <table>
+              <thead>
+                  <tr>
+                      <th>Detector</th>
+                      <th>Result</th>
+                      <th>Details</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for submission in submission_history %}
+                  <tr>
+                      <td>{{ submission.detector }}</td>
+                      <td>
+                          <div class="gauge">
+                              <span>{{ submission.confidence }}</span>
+                              <p>{{ submission.result }}</p>
+                          </div>
+                      </td>
+                      <td>
+                          <span>{{ submission.status }}</span>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+              <div class="buttons">
+                  <a href="/upload"><button class="upload-button">Upload Another File</button></a>
+                  <a href="/profile"><button class="check-history-button">Check Submission History</button></a>
+              </div>
           </div>
-        </div>
-      </footer>
-</body>
+          <style>
+            body {
+                background-color: var(--dl-color-scheme-yellow20);
+            }
+        </style>
+          {% include 'footer.html' %}
+  </body>
 </html>

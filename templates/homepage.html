@@ -3,12 +3,11 @@
 {% block content %}
 
   <body>
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}" />
     <div>
-      <link href="../static/css/homepage.css" rel="stylesheet" />
+      <link href="{{ url_for('static', filename='/css/homepage.css') }}" rel="stylesheet" />
 
       <div class="home-container">
-
         <div class="home-hero hero-container section-container">
           <div class="home-max-width1 max-width">
             <div class="home-content">
@@ -32,6 +31,7 @@
                   </a>
 
               {% else %}
+              <div class="home-container01">
               <a href="/login">
                 <button class="button button-gradient">Get started</button>
                 </a>
@@ -45,7 +45,7 @@
             <div class="home-image2">
               <img
                 alt="image"
-                src="../static/images/union-400h.png"
+                src="{{ url_for('static', filename='/images/union-400h.png') }}"
                 class="home-graphic-top"
               />
               <img
@@ -55,7 +55,7 @@
               />
               <img
                 alt="image"
-                src="../static/images/deepfake(1)-900w.jpg"
+                src="{{ url_for('static', filename='/images/deepfake(1)-900w.jpg') }}"
                 class="home-hero-image"
               />
             </div>

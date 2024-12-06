@@ -62,41 +62,44 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 details-content">
-                        <img src="{{ file.file_url }}" alt="Placeholder Image" class="img-fluid">
-                    </div>
+                  {% for file_id, result in results.items() %}
+                      <div class="col-12 details-content">
+                        <div class="image-wrapper">
+                          <div class="face-number">{{ loop.index }}</div> <!-- Face number -->
+                          <img src="{{ result.file_details.file_url }}" alt="Uploaded Image" class="img-fluid">
+                        </div>
+                      </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 details-note">
-                        DeepTective aims to give an opinion about the scanned video and is not responsible for the result. As DeepTective is still in beta, the results should not be treated as an absolute truth or evidence.
-                    </div>
-                </div>
-                <div class="result-section row">
-                    <div class="col-md-4">
-                        <h5>Model Results</h5>
-                        {% for model, result in results.items() %}
-                        <p>
-                            {{ model }}: 
-                            <span class="{% if 'real' in result.label %}text-success{% else %}text-danger{% endif %}">
-                                {{ result.label }} ({{ result.confidence }})
-                            </span>
-                        </p>
-                    {% endfor %}
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Image</h5>
-                        <p>File Name:  {{ file.file_name }}</p>
-                        <p>Upload Date: {{ file.upload_date }}</p>
-                        <!-- <p>File Type: {{ file.file_type }}</p> -->
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Audio</h5>
-                        <p>Duration: -</p>
-                        <p>Channel: -</p>
-                        <p>Sample Rate: -</p>
-                        <p>Codec: -</p>
-                    </div>
-                </div>
+                      <div class="result-section row">
+                          <div class="col-md-4">
+                              <h5>Model Results</h5>
+                              {% for model, res in result.file_results.items() %}
+                                  <p>
+                                      {{ model }}: 
+                                      <span class="{% if 'real' in res.label %}text-success{% else %}text-danger{% endif %}">
+                                          {{ res.label }} ({{ res.confidence }})
+                                      </span>
+                                  </p>
+                              {% endfor %}
+                          </div>
+              
+                          <div class="col-md-4">
+                              <h5>Image</h5>
+                              <p>File Name: {{ result.file_details.file_name }}</p>
+                              <p>Upload Date: {{ result.file_details.upload_date }}</p>
+                          </div>
+              
+                          <div class="col-md-4">
+                              <h5>Audio</h5>
+                              <p>Duration: -</p>
+                              <p>Channel: -</p>
+                              <p>Sample Rate: -</p>
+                              <p>Codec: -</p>
+                          </div>
+                      </div>
+                  {% endfor %}
+              </div>
+              
             </div>
             <!-- <div class="result-section row">
                 <div class="col-12 text-center">
@@ -108,6 +111,22 @@
         <style>
             body {
                 background-color: var(--dl-color-scheme-yellow20);
+            }
+            .image-wrapper {
+                position: relative;
+                display: inline-block;
+            }
+
+            .face-number {
+                position: absolute;
+                top: 10px; /* Adjust as needed */
+                left: 10px; /* Adjust as needed */
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+                color: white;
+                padding: 5px 10px;
+                font-size: 18px;
+                font-weight: bold;
+                border-radius: 5px;
             }
         </style>
         {% include 'footer.html' %}

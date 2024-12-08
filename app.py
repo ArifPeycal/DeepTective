@@ -25,7 +25,7 @@ from PIL import Image
 from io import BytesIO
 import requests
 import cv2
-from mtcnn import MTCNN                                                      
+import mediapipe as mp  
 
 app = Flask(__name__, template_folder='templates')
 app.config.from_object(Config)
@@ -125,48 +125,53 @@ def drag():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    def detect_faces_and_crop(image_path, output_size=(256, 256)):
-        """
-        Detect faces in an image using Haar Cascade, filter out faces smaller than 100x100,
-        and return cropped and resized faces.
-        """
-        face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    def detect_faces_and_crop(image_path):
+
+        mp_face_detection = mp.solutions.face_detection
 
         # Load the image
         img = cv2.imread(image_path)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        h, w, _ = img.shape
 
-        # Detect faces
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-        
-        cropped_faces = []
-        for (x, y, w, h) in faces:
-            # Filter out faces smaller than 100x100
-            if w < 100 or h < 100:
-                continue
+        with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
+            # Convert BGR image to RGB
+            rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            results = face_detection.process(rgb_img)
 
-            # Crop face
-            face = img[y:y+h, x:x+w]
+            original_crops = []
 
-            # Resize to fixed size
-            face_resized = cv2.resize(face, output_size, interpolation=cv2.INTER_AREA)
-            cropped_faces.append(face_resized)
+            if results.detections:
+                for detection in results.detections:
+                    bboxC = detection.location_data.relative_bounding_box
 
-        return cropped_faces
+                    # Original cropped face without padding
+                    x_start = max(0, int(bboxC.xmin * w))
+                    y_start = max(0, int(bboxC.ymin * h))
+                    x_end = min(w, int((bboxC.xmin + bboxC.width) * w))
+                    y_end = min(h, int((bboxC.ymin + bboxC.height) * h))
 
+                    # Crop the face and append to the list
+                    original_face = img[y_start:y_end, x_start:x_end]
+                    original_crops.append(original_face)
 
+            return original_crops
 
-    def save_faces_to_disk(faces, original_file_name, base_path):
-        """Save cropped and resized faces with original filename."""
+    def save_faces_to_disk(faces, original_file_name, base_path, original_file_path):
         face_paths = []
         base_name, ext = os.path.splitext(original_file_name)
-        
+
         for idx, face in enumerate(faces):
-            face_filename = f"{base_name}_cv2_face_{idx+1}{ext}"
-            face_path = os.path.join(base_path, face_filename)
-            cv2.imwrite(face_path, face)
+            # Check face dimensions
+            face_height, face_width, _ = face.shape
+            if face_width > 500 or face_height > 500:
+                face_path = original_file_path
+            else:
+                face_filename = f"{base_name}_cv2_face_{idx+1}{ext}"
+                face_path = os.path.join(base_path, face_filename)
+                cv2.imwrite(face_path, face)
+            
             face_paths.append(face_path)
-        
+
         return face_paths
 
     # Handle image link
@@ -181,19 +186,17 @@ def upload_file():
                     for chunk in response.iter_content(1024):
                         image_file.write(chunk)
 
-                # Detect and crop faces
-                cropped_faces = detect_faces_and_crop(file_path, output_size=(256, 256))
+                cropped_faces = detect_faces_and_crop(file_path)
                 if not cropped_faces:
                     return "No faces detected in the image.", 400
 
-                face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'])
+                face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'], file_path)
 
-            # Save face metadata to the database
             user_id = session.get('user_id')
             if not user_id:
                 return "User not logged in!"
 
-            file_ids = []  # List to store file_ids of cropped faces
+            file_ids = []  
             for face_path in face_paths:
                 new_file = File(
                     file_name=os.path.basename(face_path),
@@ -204,9 +207,9 @@ def upload_file():
                 db.session.add(new_file)
                 db.session.commit()
 
-                file_ids.append(new_file.id)  # Add file_id to the list
+                file_ids.append(new_file.id)  
 
-            session['file_ids'] = file_ids  # Store list of file_ids in session
+            session['file_ids'] = file_ids  
             return redirect(url_for('choose_model'))
 
         except Exception as e:
@@ -219,15 +222,12 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
         file.save(file_path)
 
-        # Detect and crop faces
-        cropped_faces = detect_faces_and_crop(file_path, output_size=(256, 256))
+        cropped_faces = detect_faces_and_crop(file_path)
         if not cropped_faces:
             return "No faces detected in the uploaded file.", 400
 
-        # Save cropped faces with original filename
-        face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'])
+        face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'], file_path)
 
-        # Save face metadata to the database
         user_id = session.get('user_id')
         if not user_id:
             return "User not logged in!"
@@ -243,16 +243,16 @@ def upload_file():
             db.session.add(new_file)
             db.session.commit()
 
-            file_ids.append(new_file.id)  # Add file_id to the list
+            file_ids.append(new_file.id)  
 
-        session['file_ids'] = file_ids  # Store list of file_ids in session
+        session['file_ids'] = file_ids  
         return redirect(url_for('choose_model'))
 
     return "File upload failed!"
 
 @app.route('/choose_model')
 def choose_model():
-    file_ids = session.get('file_ids')  # Get list of file_ids from session
+    file_ids = session.get('file_ids') 
     mlmodels = MLModel.query.all() 
 
     if not file_ids:

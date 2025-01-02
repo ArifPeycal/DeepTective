@@ -61,6 +61,24 @@ def validate_email(email):
     regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
     return re.match(regex, email) is not None
 
+MAX_FILE_SIZE_MB = 2  # Maximum file size in MB (e.g., 5MB)
+MAX_IMAGE_WIDTH = 2000  # Maximum width (in pixels)
+MAX_IMAGE_HEIGHT = 2000  # Maximum height (in pixels)
+
+def check_image_size_and_dimensions(image_path):
+    file_size = os.path.getsize(image_path)  # in bytes
+    file_size_mb = file_size / (1024 * 1024)  # Convert to MB
+    if file_size_mb > MAX_FILE_SIZE_MB:
+        return False, f"File size exceeds the {MAX_FILE_SIZE_MB} MB limit."
+
+    # Check image dimensions
+    with Image.open(image_path) as img:
+        width, height = img.size
+        if width > MAX_IMAGE_WIDTH or height > MAX_IMAGE_HEIGHT:
+            return False, f"Image dimensions exceed the maximum allowed size of {MAX_IMAGE_WIDTH}x{MAX_IMAGE_HEIGHT} pixels."
+
+    return True, "Image is valid."
+
 @app.route('/')
 def home():
     if 'user_id' in session:
@@ -147,10 +165,12 @@ def upload_file():
     def detect_faces_and_crop(image_path):
 
         mp_face_detection = mp.solutions.face_detection
-
-        # Load the image
         img = cv2.imread(image_path)
         h, w, _ = img.shape
+
+
+        if img is None:
+            raise ValueError(f"Failed to load image at path: {image_path}. The file may be corrupt or not a valid image.")
 
         with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
             # Convert BGR image to RGB
@@ -180,7 +200,6 @@ def upload_file():
         base_name, ext = os.path.splitext(original_file_name)
 
         for idx, face in enumerate(faces):
-            # Check face dimensions
             face_height, face_width, _ = face.shape
             if face_width > 500 or face_height > 500:
                 face_path = original_file_path
@@ -193,7 +212,6 @@ def upload_file():
 
         return face_paths
 
-    # Handle image link
     image_link = request.form.get('image_link')
     if image_link:
         try:
@@ -207,13 +225,17 @@ def upload_file():
 
                 cropped_faces = detect_faces_and_crop(file_path)
                 if not cropped_faces:
-                    return "No faces detected in the image.", 400
+                    os.remove(file_path)
+                    return render_template('drag.html', error="No faces detected in the image.")
 
                 face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'], file_path)
+            else:
+                os.remove(file_path)
+                return render_template('drag.html', error="Invalid image link. Please provide a valid image URL.")
 
             user_id = session.get('user_id')
             if not user_id:
-                return "User not logged in!"
+                return render_template('drag.html', error="User not logged in!") 
 
             file_ids = []  
             for face_path in face_paths:
@@ -234,22 +256,31 @@ def upload_file():
         except Exception as e:
             return f"Failed to process the image link: {str(e)}", 500
 
-    # Handle file upload
     file = request.files.get('file_image')
     if file:
         file_name = secure_filename(file.filename)
+
+        if not file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp')):
+            return render_template('drag.html', error="Invalid file type. Please upload an image file.")
+
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
         file.save(file_path)
 
+        is_valid, error_message = check_image_size_and_dimensions(file_path)
+        if not is_valid:
+            os.remove(file_path)
+            return render_template('drag.html', error=error_message)
+
         cropped_faces = detect_faces_and_crop(file_path)
         if not cropped_faces:
-            return "No faces detected in the uploaded file.", 400
+            os.remove(file_path)
+            return render_template('drag.html', error="No faces detected in the image.")
 
         face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'], file_path)
 
         user_id = session.get('user_id')
         if not user_id:
-            return "User not logged in!"
+            return render_template('drag.html', error="User not logged in!") 
 
         file_ids = [] 
         for face_path in face_paths:
@@ -267,7 +298,8 @@ def upload_file():
         session['file_ids'] = file_ids  
         return redirect(url_for('choose_model'))
 
-    return "File upload failed!"
+    return render_template('drag.html', error="No file selected. Please upload a valid image file.")
+
 
 @app.route('/choose_model')
 def choose_model():

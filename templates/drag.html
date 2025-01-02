@@ -59,6 +59,10 @@
     
     <div class="container">
       <h2>Upload your File</h2>
+      {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+
       <form action="/upload" method="POST" class="upload-form" enctype="multipart/form-data">
         <!-- Paste link input -->
         <div class="search-container">
@@ -70,7 +74,7 @@
             placeholder="Paste link here..."
             oninput="previewImageFromLink()">
         </div>
-    
+        
         <!-- File upload input -->
         <label for="input-file" id="drop-area">
           <input type="file" id="input-file" name="file_image" hidden onchange="previewImageFromFile(event)">

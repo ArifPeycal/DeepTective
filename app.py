@@ -221,6 +221,8 @@ def upload_file():
     if image_link:
         try:
             response = requests.get(image_link, stream=True)
+            print(response.headers.get)
+
             if response.status_code == 200 and 'image' in response.headers.get('Content-Type', ''):
                 file_name = secure_filename(os.path.basename(image_link))
                 file_path = os.path.join(app.config['UPLOAD_FOLDER'], file_name)
@@ -230,12 +232,10 @@ def upload_file():
 
                 cropped_faces = detect_faces_and_crop(file_path)
                 if not cropped_faces:
-                    os.remove(file_path)
                     return render_template('drag.html', error="No faces detected in the image.")
 
                 face_paths = save_faces_to_disk(cropped_faces, file_name, app.config['UPLOAD_FOLDER'], file_path)
             else:
-                os.remove(file_path)
                 return render_template('drag.html', error="Invalid image link. Please provide a valid image URL.")
 
             user_id = session.get('user_id')

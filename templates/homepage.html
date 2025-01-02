@@ -80,14 +80,14 @@
                 <br />
               </h1>
               <span class="home-text021">
-                Our proprietary algorithms can analyze videos and images to
+                Our proprietary algorithms can analyze images to
                 identify signs of manipulation. We support common formats like
-                MP4, MOV, JPG, and PNG.
+                JPG and PNG.
               </span>
               <div class="home-container02">
-                <button class="button-secondary button bg-transparent">
+                <!-- <button class="button-secondary button bg-transparent">
                   Learn more
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
         <div class="home-section1 section-container">
           <div class="home-max-width3 max-width">
             <div class="home-content2">
-              <span class="home-text022 beforeHeading">ANALYSE YOUR FILES</span>
+              <span id = "features" class="home-text022 beforeHeading">ANALYSE YOUR FILES</span>
               <h1 class="home-text023">
                 <span class="home-text024">Detect deepfake</span>
                 <span class="home-text025">with our detection models</span>
@@ -106,9 +106,9 @@
                 content is a deepfake or not along with confidence score.
               </span>
               <div class="home-container03">
-                <button class="button-secondary button bg-transparent">
+                <!-- <button class="button-secondary button bg-transparent">
                   See how
-                </button>
+                </button> -->
               </div>
             </div>
             <div class="home-image5"></div>
@@ -220,7 +220,7 @@
           <div class="home-max-width6 max-width">
             <div class="home-faq">
               <div class="home-questions">
-                <span class="home-text042 beforeHeading">faq</span>
+                <span id = "faq" class="home-text042 beforeHeading">faq</span>
                 <h1 class="home-text043">
                   <span class="home-text044">Frequently Asked</span>
                   <br />
@@ -314,9 +314,23 @@
                 <a href="#howitworks"><button class="home-button08 button button-transparent">
                   How it works</a>
                 </button>
-                <button class="home-button09 button button-gradient">
-                  Get started
-                </button>
+                {% if 'username' in session %}
+                  <a href="/upload">
+                    <button class="home-button09 button button-gradient">
+                      Get started
+                    </button>
+                    </a>
+  
+                {% else %}
+                <div class="home-container01">
+                <a href="/login">
+                  <button class="home-button09 button button-gradient">
+                    Get started
+                  </button>
+                  </a>
+                    
+                {% endif %}
+
               </div>
             </div>
           </div>

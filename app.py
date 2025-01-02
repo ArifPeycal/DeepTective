@@ -12,6 +12,8 @@ from models import db, User, File, MLModel, AnalysisResult
 # Flask Extensions
 from flask_migrate import Migrate
 
+import html
+
 # Werkzeug Utilities
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
@@ -124,13 +126,14 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
 
+
         if not username or not email or not password:
             error = 'All fields are required.'
             return render_template('register.html', error=error)
         
         if not validate_email(email):
             error = 'Invalid email format. Please try again.', 'error'
-            return render_template('login.html', error=error)
+            return render_template('register.html', error=error)
 
         hashed_password = generate_password_hash(password)
 
@@ -139,6 +142,8 @@ def register():
             error = 'Username or email already exists.'
             return render_template('register.html', error=error)
 
+        user.email = html.escape(email)
+        user.username = html.escape(username)
 
         try:
             new_user = User(username=username, email=email, password=hashed_password)
@@ -444,16 +449,17 @@ def file_history(file_id):
 
 @app.route('/update-profile', methods=['GET', 'POST'])
 def update_profile():
+    error = None
     if 'user_id' not in session:
-        flash("You must be logged in to access this page.", "error")
-        return redirect(url_for('login'))
+        error = "You must be logged in to access this page."
+        return render_template('login.html',error=error)
 
     logged_in_user_id = session.get('user_id')
     user = User.query.get(logged_in_user_id)
 
     if not user:
-        flash("User not found!", "error")
-        return redirect(url_for('login'))
+        error = "User not found!"
+        return render_template('login.html',error=error)
 
     if request.method == 'POST':
         try:
@@ -462,14 +468,32 @@ def update_profile():
             password = request.form.get('password')
             confirm_password = request.form.get('confirm-password')
 
-            print(f"Received: Email={email}, Username={username}, Password={password}, Confirm Password={confirm_password}")
+            if not validate_email(email):
+                error = 'Invalid email format. Please try again.'
+                return render_template('update.html', user=user, error=error)
+
+            if not username or not email or not password:
+                error = 'All fields are required.'
+                return render_template('update.html', user=user, error=error)
 
             if password and password != confirm_password:
-                flash("Passwords do not match!", "error")
-                return render_template('update.html', user=user)
+                error = "Passwords do not match!"
+                return render_template('update.html', user=user, error=error)
 
-            user.email = email
-            user.username = username
+            existing_user_by_username = User.query.filter_by(username=username).first()
+            existing_user_by_email = User.query.filter_by(email=email).first()
+
+            if existing_user_by_username and existing_user_by_username.id != logged_in_user_id:
+                error = 'Username is already taken. Please choose a different one.'
+                return render_template('update.html', user=user, error=error)
+
+            if existing_user_by_email and existing_user_by_email.id != logged_in_user_id:
+                error = 'Email is already registered. Please use a different one.'
+                return render_template('update.html', user=user, error=error)
+
+
+            user.email = html.escape(email)
+            user.username = html.escape(username)
             if password:
                 user.password = generate_password_hash(password)
 
@@ -479,8 +503,8 @@ def update_profile():
 
         except Exception as e:
             print(f"Error occurred: {e}")  
-            flash("An error occurred while updating your profile. Please try again.", "error")
-            return render_template('update.html', user=user)
+            error = "An error occurred while updating your profile. Please try again."
+            return render_template('update.html', user=user, error=error)
 
     return render_template('update.html', user=user)
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Login</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='/icon/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='/icon/apple-touch-icon.png') }}">
@@ -12,14 +12,19 @@
     <link rel="mask-icon" href="{{ url_for('static', filename='/icon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="../static/css/register.css">
 </head>
 <body>
     <div id="form">
         <h1 class="text-center">Update Your Details</h1>
         <form method="POST" autocomplete="off" action="/update-profile">
+            {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
             <label>Username: </label>
-            <input type="text" id="username" name="username" value="{{ user.username }}"  required><br><br>
+            <input type="text" id="username" name="username" value="{{ user.username }}" pattern="^[a-zA-Z0-9_]{5,20}$" required><br><br>
             <label>Email: </label>
             <input type="email" id="email" name="email" value="{{ user.email }}" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required></br></br>
             <label>Password: </label>

@@ -1,15 +1,16 @@
-/* Body styling */
+
 body {
     font-family: Verdana, Geneva, sans-serif;
-    font-size: 14px;
+    font-size: 14px !important;
     margin: 0;
     padding: 20px;
     background-color: #105749; /* Dark green color */
+    box-sizing: content-box
   }
   
   /* Form container styling */
   #form {
-    width: 400px;
+    width: 450px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -24,6 +25,10 @@ body {
     text-align: center;
     color: #333; /* Dark gray color */
     margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 2rem;
+    font-weight: 1000;
+
   }
   
   /* Label styling */

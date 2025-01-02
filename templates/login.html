@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Login</title>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self';"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="{{ url_for('static', filename='/icon/favicon.ico') }}" type="image/x-icon">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='/icon/apple-touch-icon.png') }}">
@@ -12,21 +12,43 @@
         <link rel="mask-icon" href="{{ url_for('static', filename='/icon/safari-pinned-tab.svg') }}" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../static/css/register.css">
+        
+
     </head>
     <body>
-        
+
         <div id="form">
             <h1>Login</h1>
             <form method="POST" autocomplete="off" action="/login">
+                {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            
+            {% if success %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ success }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            
                 <label>Email: </label>
                 <input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required></br></br>
                 <label>Password: </label>
                 <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required></br></br>
-                <!-- <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>"> -->
                 <input type="submit" id="btn" value="Submit"><br><br>
                 <a href="/register">Click to Sign Up</a>
             </form>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

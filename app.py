@@ -1,5 +1,6 @@
 # Standard Library Imports
 import os
+import re
 
 # Flask Imports
 from flask import Flask, render_template, request, redirect, flash, session, url_for
@@ -55,6 +56,10 @@ def predict_deepfake(model, file_path):
     confidence = "{:.02%}".format(y)  
     return result[int(x)], confidence
 
+def validate_email(email):
+    # Regular expression for a simple email validation
+    regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    return re.match(regex, email) is not None
 
 @app.route('/')
 def home():
@@ -62,11 +67,18 @@ def home():
         return render_template('homepage.html', username=session['username'])
     return render_template('homepage.html') 
 
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
+
+        if not validate_email(email):
+            error = 'Invalid email format. Please try again.'
+            return render_template('login.html', error=error)
 
         if not email or not password:
             flash('Please enter both email and password.', 'error')
@@ -81,41 +93,48 @@ def login():
             flash('Login successful!', 'success')
             return redirect('/')  
         else:
-            flash('Invalid credentials, please try again.', 'error')
-            return redirect('/login')
+            error = 'Invalid email or password. Please try again.'
 
-    return render_template('login.html')
+    return render_template('login.html', error=error)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    error = None
+    success = None
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
 
         if not username or not email or not password:
-            flash('All fields are required.', 'error')
-            return redirect('/register')
+            error = 'All fields are required.'
+            return render_template('register.html', error=error)
+        
+        if not validate_email(email):
+            error = 'Invalid email format. Please try again.', 'error'
+            return render_template('login.html', error=error)
 
         hashed_password = generate_password_hash(password)
 
         existing_user = User.query.filter((User.email == email) | (User.username == username)).first()
         if existing_user:
-            flash('Username or email already exists.', 'error')
-            return redirect('/register')
+            error = 'Username or email already exists.'
+            return render_template('register.html', error=error)
+
 
         try:
             new_user = User(username=username, email=email, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
-            flash('Registration successful!', 'success')
-            return redirect('/login')  
+            success = 'Registration successful!'
+            return render_template('login.html', success=success)
+  
         except Exception as e:
             db.session.rollback()
             flash(f'Error: {str(e)}', 'error')
             return redirect('/register')
 
-    return render_template('register.html')
+    return render_template('register.html', error=error)
 
 @app.route('/upload', methods=['GET'])
 def drag():

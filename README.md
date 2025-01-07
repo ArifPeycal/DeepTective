@@ -57,13 +57,13 @@ To start using **DeepTective**, follow these steps:
 5. **Run Seeder Script**  
    After setting up the database, you can run the `seeder.py` script to populate the database with initial data (e.g., ML models):
    ```bash
-   python seeder.py
+   python3 seed.py
    ```
 
 6. **Run the Application**  
    Finally, start the application by running:
    ```bash
-   python app.py
+   python3 app.py
    ```
 
 Your application should now be running, and you can start interacting with **DeepTective**.

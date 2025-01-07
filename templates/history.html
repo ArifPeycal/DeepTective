@@ -40,6 +40,8 @@
     href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
   />
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../static/js/raphael-2.1.4.min.js"></script>
+  <script src="../static/js/justgage.js"></script>
 </head>
   <body>
     <link rel="stylesheet" href="../static/css/history.css">
@@ -48,42 +50,69 @@
       <link href="{{ url_for('static', filename='/css/homepage.css') }}" rel="stylesheet" />
         <div class="home-container">
         {% include 'navbar.html' %}
-          <div class="container">
-            <table>
-              <thead>
-                  <tr>
-                      <th>Detector</th>
-                      <th>Result</th>
-                      <th>Details</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for submission in submission_history %}
-                  <tr>
-                      <td>{{ submission.detector }}</td>
-                      <td>
-                          <div class="gauge">
-                              <span>{{ submission.confidence }}</span>
-                              <p>{{ submission.result }}</p>
-                          </div>
-                      </td>
-                      <td>
-                          <span>{{ submission.status }}</span>
-                      </td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
+        <div class="container">
+          <table>
+            <thead>
+              <tr>
+                <th>Detector</th>
+                <th>Result</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for submission in submission_history %}
+              <tr>
+                <td>{{ submission.detector }}</td>
+                <td>
+                  <div class="gauge-container" style="width: 150px; height: 120px; display: inline-block;">
+                    <div class="gauge" id="gauge-{{ loop.index }}" style="width: 100%; height: 100%;">
+                      <!-- JustGage will be initialized here -->
+                      <h6 style="color: {% if submission.result == 'deepfake' %} #FF0000 {% elif submission.result == 'real' %} #00FF00 {% else %} black {% endif %};">
+                        {{ submission.result }}
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span>{{ submission.status }}</span>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
           </table>
-              <div class="buttons">
-                  <a href="/upload"><button class="upload-button">Upload Another File</button></a>
-                  <a href="/profile"><button class="check-history-button">Check Submission History</button></a>
-              </div>
+        
+          <script>
+            {% for submission in submission_history %}
+            var g{{ loop.index }} = new JustGage({
+              id: "gauge-{{ loop.index }}",  // Unique ID for each gauge
+              value: {{ submission.confidence|replace('%', '')|float }},
+              min: 0,
+              max: 100,
+              // title: "{{ submission.detector }}",
+              gaugeWidthScale: 0.4,  // Adjusted to make it smaller
+              levelColors: ['#FF0000', '#00FF00'], // Customize colors based on the confidence level
+              doughnut: true,  // Optional: Makes the gauge a doughnut style
+              donutSize: 0.1     // Optional: Makes the doughnut smaller
+            });
+            {% endfor %}
+          </script>
+        </div>
           </div>
           <style>
             body {
                 background-color: var(--dl-color-scheme-yellow20);
             }
         </style>
+
+        <script>
+          var g = new JustGage({
+            id: "gauge",
+            value: 67,
+            min: 0,
+            max: 100,
+            title: "Visitors"
+          });
+        </script>
           {% include 'footer.html' %}
   </body>
 </html>

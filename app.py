@@ -53,8 +53,6 @@ def predict_deepfake(model, file_path):
     preds = model.predict(i)
     x = (preds > 0.5).astype("int32") 
     y = float(preds[0])  
-    if y < 0.5:
-        y = 1 - y
     confidence = "{:.02%}".format(y)  
     return result[int(x)], confidence
 
@@ -142,8 +140,8 @@ def register():
             error = 'Username or email already exists.'
             return render_template('register.html', error=error)
 
-        user.email = html.escape(email)
-        user.username = html.escape(username)
+        email = html.escape(email)
+        username = html.escape(username)
 
         try:
             new_user = User(username=username, email=email, password=hashed_password)
@@ -167,12 +165,10 @@ def drag():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    def detect_faces_and_crop(image_path):
-
+    def detect_faces_and_crop(image_path, top_padding=100, right_padding=70, bottom_padding=70, left_padding=70):
         mp_face_detection = mp.solutions.face_detection
         img = cv2.imread(image_path)
         h, w, _ = img.shape
-
 
         if img is None:
             raise ValueError(f"Failed to load image at path: {image_path}. The file may be corrupt or not a valid image.")
@@ -182,23 +178,29 @@ def upload_file():
             rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             results = face_detection.process(rgb_img)
 
-            original_crops = []
+            padded_crops = []
 
             if results.detections:
                 for detection in results.detections:
                     bboxC = detection.location_data.relative_bounding_box
 
-                    # Original cropped face without padding
-                    x_start = max(0, int(bboxC.xmin * w))
-                    y_start = max(0, int(bboxC.ymin * h))
-                    x_end = min(w, int((bboxC.xmin + bboxC.width) * w))
-                    y_end = min(h, int((bboxC.ymin + bboxC.height) * h))
+                    # Calculate the bounding box coordinates with custom padding
+                    x_start = int(bboxC.xmin * w) - left_padding
+                    y_start = int(bboxC.ymin * h) - top_padding
+                    x_end = int((bboxC.xmin + bboxC.width) * w) + right_padding
+                    y_end = int((bboxC.ymin + bboxC.height) * h) + bottom_padding
 
-                    # Crop the face and append to the list
-                    original_face = img[y_start:y_end, x_start:x_end]
-                    original_crops.append(original_face)
+                    # Ensure the face stays within the image boundaries
+                    x_start = max(0, x_start)
+                    y_start = max(0, y_start)
+                    x_end = min(w, x_end)
+                    y_end = min(h, y_end)
 
-            return original_crops
+                    # Crop the face with padding and append to the list
+                    padded_face = img[y_start:y_end, x_start:x_end]
+                    padded_crops.append(padded_face)
+
+            return padded_crops
 
     def save_faces_to_disk(faces, original_file_name, base_path, original_file_path):
         face_paths = []
@@ -206,7 +208,7 @@ def upload_file():
 
         for idx, face in enumerate(faces):
             face_height, face_width, _ = face.shape
-            if face_width > 500 or face_height > 500:
+            if face_width > 500 and face_height > 500:
                 face_path = original_file_path
             else:
                 face_filename = f"{base_name}_cv2_face_{idx+1}{ext}"

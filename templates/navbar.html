@@ -14,8 +14,8 @@
                 <!-- Links Section for Logged-In Users -->
                 <div data-thq="thq-navbar-nav" class="home-desktop-menu">
                     <div class="home-links">
-                        <a href="#howitworks"><span class="home-text navbarLink">How it Works</span></a>
-                        <a href="#getstarted"><span class="home-text001 navbarLink">Features</span></a>
+                        <a href="/#howitworks"><span class="home-text navbarLink">How it Works</span></a>
+                        <a href="/#getstarted"><span class="home-text001 navbarLink">Features</span></a>
                         <!-- <span class="home-text002 navbarLink">Blog</span> -->
                         <a href="{{ url_for('contact') }}"><span class="home-text003 navbarLink">Contact Us</span></a>
                     </div>
@@ -45,13 +45,13 @@
                     </div>
                     <ul class="profile-dropdown-list">
                         <li class="profile-dropdown-list-item">
-                            <a href="{{ url_for('profile') }}">
+                            <a href="{{ url_for('update_profile') }}">
                                 <i class="fa-regular fa-user"></i>
                                 Edit Profile
                             </a>
                         </li>
                         <li class="profile-dropdown-list-item">
-                            <a href="/history">
+                            <a href="{{ url_for('profile') }}">
                                 <i class="fa-solid fa-chart-line"></i>
                                 Check Activity
                             </a>
